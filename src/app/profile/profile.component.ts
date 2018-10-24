@@ -1,27 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 
 declare const gapi: any;
 declare const request: any;
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+    selector: 'app-profile',
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private http: HttpClient, private cookieService: CookieService) { }
-  userinfo = {name: '', email: ''};
-  tokenValue = '';
-  file: File;
-  fileToUpload: File = null;
-  ngOnInit() {
-    this.tokenValue = this.cookieService.get('TokenID');
-    this.userinfo.name = this.cookieService.get('name');
-    this.userinfo.email = this.cookieService.get('email');
-  }
+    constructor(private http: HttpClient, private cookieService: CookieService) { }
+    userinfo = { name: '', email: '' };
+    tokenValue = '';
+    file: File;
+    fileToUpload: File = null;
+    ngOnInit() {
+        this.tokenValue = this.cookieService.get('TokenID');
+        this.userinfo.name = this.cookieService.get('name');
+        this.userinfo.email = this.cookieService.get('email');
+    }
 
     handleFileInput(files: FileList) {
         this.fileToUpload = files.item(0);
